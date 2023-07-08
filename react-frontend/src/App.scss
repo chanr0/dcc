@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import "~@webpixels/css/core/functions";
+@import "utils/styling/template_variables";
+@import "~@webpixels/css/base";
+@import "~@webpixels/css/forms";
+@import "~@webpixels/css/components";
+@import "~@webpixels/css/utilities";
+
+.Input {
+  text-transform: none;
+  font-size: 14px;
+}

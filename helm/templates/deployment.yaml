@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-backend
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-backend
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-backend
+        image: {{ .Values.image.host }}/{{ .Values.image.name }}-backend:{{ .Values.image.tag }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        env:
+        - name: CONTEXT_PATH
+          value: "backend"
+        - name: COMMIT_ID
+          value: {{ .Values.build.commit | quote }}
+        - name: JOB_ID
+          value: {{ .Values.build.job_id | quote }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-frontend
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-frontend
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-frontend
+        image: {{ .Values.image.host }}/{{ .Values.image.name }}-frontend:{{ .Values.image.tag }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000

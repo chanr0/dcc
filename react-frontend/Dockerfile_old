@@ -1,0 +1,27 @@
+# Base layer for the image
+FROM node:14
+
+ENV NODE_ENV=production
+
+# Specify work directory within the image repository
+# Future lines will run here
+WORKDIR /usr/src/app
+
+# Copy over dependencies
+COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+
+# Install dependencies in image
+RUN npm install -g sass
+# RUN npm install @webpixels/css@latest bootstrap@latest --save-dev
+RUN npm install --production --silent
+
+# Copy the rest of the files over
+COPY . .
+
+# Determine connection port 
+EXPOSE 3000
+
+RUN chown -R node /usr/src/app
+USER node
+
+CMD ["npm", "start"]

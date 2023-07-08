@@ -1,0 +1,28 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
+
+.header-background{
+  // background-image: url("/imgs/header.png");
+  // background-image: url("/imgs/header_monstera.jpg");
+  // background-image: url("/imgs/header_architecture.jpg");
+  // background-image: url("/imgs/header_architecture_2.jpg");
+  background-image: url("/imgs/header_teo.jpg");
+  // background-image: url("/imgs/header_sd.png");
+  background-position: 50% 25%;
+}
+
+.table-badge{
+  line-height: 1.8rem !important;
+  font-size: 14px;
+}
+
+.table-padding {
+  padding-top: 0px;
+}
+
+.table > :not(caption) > * > * {
+  padding: 0.7rem 1.5rem !important;
+}
+
+.xaxisbar text {
+  font-size: 1px
+}
