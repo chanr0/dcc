@@ -10,8 +10,8 @@ export interface queryBackendProps {
 }
 // CHANGE THIS WHEN MOVING FROM LOCALHOST!
 // export const BASE_URL = `http://be.${window.location.hostname}/api/v1`
-
-export const BASE_URL = "http://localhost:8000/api/v1";
+export const BASE_URL = 'https://dcc-backend.onrender.com/api/v1';
+//export const BASE_URL = "http://localhost:8000/api/v1";
 
 export const queryBackend = async (route: string) => {
     const requestURL = `${BASE_URL}/${route}`;
