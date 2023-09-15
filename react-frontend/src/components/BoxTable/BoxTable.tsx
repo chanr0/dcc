@@ -15,8 +15,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import Popper from '@mui/material/Popper';
 import { GridRenderCellParams } from '@mui/x-data-grid';
 
-import { deleteData } from '../../backend/BackendQueryEngine';
-
 interface StringObj {[key: string]: string}
 
 interface Props {
@@ -243,12 +241,15 @@ const LabeledTable: React.FunctionComponent<Props> = (
                             justifyContent: "left",
                             alignItems: "left",
                     }}>
-                        <IconButton onClick={() => deleteData(
-                                "delete-data?sentence1=" + sentence1
+                        <IconButton onClick={() => fetch(
+                            (
+                                "http://127.0.0.1:8000/delete-data?sentence1=" + sentence1
                                 + "&sentence2=" + sentence2 + "&new_premise=" + params.row['New Premise']
                                 + "&new_hypothesis=" + params.row["New Hypothesis"]
                                 + "&label=" + params.row[human_field]
-                            ).then(UpdateLabeledOld())}>
+                            )
+                            ,
+                            {method: "POST"}).then(UpdateLabeledOld())}>
                             <DeleteIcon/>
                         </IconButton>
                     </Box>

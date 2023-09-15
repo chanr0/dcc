@@ -33,9 +33,6 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { AnyMxRecord } from 'dns';
 import { NLIDataArray } from '../../components/types/NLIDataArray';
 
-import { submitData } from '../../backend/BackendQueryEngine';
-
-
 interface Props {
     data: NLIDataArray;
     suggestion: string[];
@@ -167,12 +164,11 @@ const BoxPolyjuice: React.FunctionComponent<Props> = ({
             "annotator_label": cflabel,
         }
 
-        // fetch("http://127.0.0.1:8000/submit-data", {
-        //     method: "POST",
-        //     headers: {"Content-Type": "application/json"},
-        //     body: JSON.stringify(data)
-        // }).then(UpdateLabeledOld())
-        submitData(`submit-data`, data).then(UpdateLabeledOld());
+        fetch("http://127.0.0.1:8000/submit-data", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data)
+        }).then(UpdateLabeledOld())
 
         setNNCount(0);
         setQNNCount(0);

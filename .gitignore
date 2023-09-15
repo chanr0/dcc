@@ -3,4 +3,4 @@
 
 venv
 node_modules
-backend-project
+backend/venv

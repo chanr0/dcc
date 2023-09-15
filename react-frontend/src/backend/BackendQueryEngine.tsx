@@ -94,24 +94,6 @@ export const queryBackendDisplayData = async (route: string): Promise<NLISubmiss
     return data;
 }
 
-export const submitData = async(route: string, d: any) => {
-    const requestURL = `${BASE_URL}/${route}`;
-    const data = await fetch(requestURL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(d)
-    });
-}
-
-export const deleteData = async(route: string) => {
-    const requestURL = `${BASE_URL}/${route}`;
-    const data = await fetch(requestURL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        // body: JSON.stringify(d)
-    });
-}
-
 
 export const queryBackendDisplayDataGraph = async (route:string) => {
     const requestURL = `${BASE_URL}/${route}`;
