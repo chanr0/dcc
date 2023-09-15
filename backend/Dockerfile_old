@@ -1,0 +1,16 @@
+# Base layer for the image
+FROM python:3.9.12
+
+# Specify work directory within the image repository
+# Future lines will run here
+WORKDIR /usr/src/app
+
+COPY ./src /usr/src/app
+
+# Install dependencies in image
+RUN pip3 install -r requirements.txt
+
+# Determine connection port 
+EXPOSE 8000
+
+CMD ["uvicorn", "app:app", "--reload", "--host", "0.0.0.0"]
